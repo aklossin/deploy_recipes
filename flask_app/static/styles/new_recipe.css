@@ -1,0 +1,49 @@
+*   {
+    padding: None;
+    margin: None;
+}
+
+.head   {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    margin: 10px;
+}
+
+form    {
+    display: flex;  
+    margin: 25px;
+    height: auto;
+    justify-content: space-between;
+    width: 60%;
+}
+
+form div    {
+    display: flex;
+    flex-direction: column;
+}
+
+form div label  {
+    margin-bottom: 5px;
+    margin-top: 10px;
+}
+
+.box {
+    width: 250px;
+    height: 100px;
+    overflow-wrap: break-word;
+}
+
+form input  {
+    width: 80%;
+}
+
+.radio {
+    display: flex;
+    flex-direction: row;
+}
+
+.sub    {
+    width: 40%;
+    margin-top: 10px;
+}

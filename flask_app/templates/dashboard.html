@@ -1,0 +1,45 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/dashboard.css') }}">
+    <title>Dashboard</title>
+</head>
+<body>
+    <div class="head">
+        <div>
+            <h1>Welcome {{ session.first_name }}</h1>
+        </div>
+        <div>
+            <a href="/recipes/new">Create</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <p>These are your recipes</p>
+    <table>
+        <tr>
+            <th>Name</th>
+            <th>Under 30 minutes?</th>
+            <th>Actions</th>
+        </tr>
+        {% for recipe in recipes %}
+            <tr>
+                <td>{{ recipe.name }}</td>
+                <td>
+                    {% if recipe.quick == 1 %}
+                    <p>Yes</p>
+                    {% else %}
+                    <p>No</p>
+                    {% endif %}
+                </td>
+                <td><a href="/recipes/{{ recipe.id }}">View Instructions |</a>
+                    {% if session['id'] == recipe.user.id %}
+                    <a href="/recipes/edit/{{ recipe.id }}"> Edit |</a><a href="/recipes/delete/{{ recipe.id }}"> Delete</a></td>
+                    {% endif %}
+            </tr>
+        {% endfor %}
+    </table>
+</body>
+</html>

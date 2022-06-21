@@ -1,0 +1,19 @@
+*   {
+    padding: None;
+    margin: None;
+}
+
+body    {
+    display: flex;
+    justify-content: space-around;
+}
+
+form    {
+    display: flex;
+    flex-direction: column;
+}
+
+.sub    {
+    width: 40%;
+    margin-top: 10px;
+}

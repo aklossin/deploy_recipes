@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="{{ url_for('static', filename='styles/new_recipe.css') }}">
+    <title>Edit Recipe</title>
+</head>
+<body>
+    <div class="head">
+        <h2>Edit Recipe</h2>
+        <div>
+            <a href="/dashboard">Dashboard</a>
+            <a href="/logout">Logout</a>
+        </div>
+    </div>
+    <form action="/recipes/change" method="post">
+        <div>
+            {% with messages = get_flashed_messages() %}
+                {% if messages %}
+                    <ul>
+                        {% for message in messages %}
+                            <li>{{ message }}</li>
+                        {% endfor %}
+                    </ul>
+                {% endif %}
+            {% endwith %}
+            <label for="name">Name:</label>
+            <input type="text" name="name" value="{{ recipe.name }}">
+            <label for="description">Description:</label>
+            <textarea name="description"cols="30" rows="10">{{ recipe.description }}</textarea>
+            <label for="instructions">Instructions:</label> 
+            <textarea name="instructions" class="box" cols="30" rows="10">{{ recipe.instructions }}</textarea>
+            <input type="submit" class="sub" value="Update">
+        </div>
+        <div>
+            <label for="date">Date Made On:</label>
+            <input type="date" name="date_made" value="{{ recipe.date_made }}">
+            <label for="under">Under 30 minutes?</label>
+            <div class="radio">
+                {% if under_30 == 1 %}
+                    <input type="radio" value="yes" checked>
+                    <label for="yes">Yes</label>
+                    <input type="radio" value="no">
+                    <label for="no">No</label>
+                {% else %}
+                    <input type="radio" value="yes">
+                    <label for="yes">Yes</label>
+                    <input type="radio" value="no" checked>
+                    <label for="no">No</label>
+                {% endif %}
+            </div>
+        </div>
+        <input type="hidden" value="{{ recipe.id }}" name="id">
+    </form>
+</body>
+</html>

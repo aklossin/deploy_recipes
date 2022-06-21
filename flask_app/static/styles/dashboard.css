@@ -1,0 +1,15 @@
+*   {
+    padding: None;
+    margin: None;
+}
+
+body    {
+    display: flex;
+    flex-direction: column;
+    margin: 25px;
+}
+
+.head   {
+    display: flex;
+    justify-content: space-between;
+}
